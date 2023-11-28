@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <!-- Seus metadados e estilos CSS aqui -->
+    <style>
+      /* Estilos CSS para a galeria */
+      .gallery {
+        display: grid;
+        justify-items: center;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+      }
+
+      .gallery img {
+        width: 200px;
+        height: 150px;
+        margin: 10px;
+        cursor: pointer;
+      }
+
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.9);
+      }
+
+      .modal-content {
+        margin: 10% auto;
+        display: block;
+        width: 80%;
+        max-width: 700px;
+      }
+
+      .modal-content img {
+        width: 100%;
+      }
+
+      .close {
+        color: #fff;
+        position: absolute;
+        top: 10px;
+        right: 25px;
+        font-size: 30px;
+        cursor: pointer;
+      }
+
+      .main {
+        background-image: url('../fotosdas/flores.jpg')
+      }
+    </style>
+  </head>
+  <body  class="main">
+    <header>
+      <h1>Salao de Manicure</h1>
+    </header>
+
+    <!-- Galeria de Imagens -->
+    <div class="gallery">
+      <img
+        src="../fotosdas/unha1.jpeg"
+        alt="Imagem 1"
+      />
+      <img
+        src="../fotosdas/unha2.jpeg"
+        alt="Imagem 2"
+      />
+      <img
+        src="../fotosdas/unha3.jpeg"
+        alt="Imagem 3"
+      />
+      <img
+        src="../fotosdas/unha4.jpeg"
+        alt="Imagem 4"
+      />
+      <img
+        src="../fotosdas/unha5.jpeg"
+        alt="Imagem 5"
+      />
+      <img
+        src="../fotosdas/unha6.jpeg"
+        alt="Imagem 6"
+      />
+      <img
+        src="../fotosdas/unha7.jpeg"
+        alt="Imagem 7"
+      />
+      <img
+        src="../fotosdas/unha8.jpeg"
+        alt="Imagem 8"
+      />
+      <!-- Adicione mais imagens conforme necessário -->
+    </div>
+
+    <!-- Modal para Visualização de Imagem em Tamanho Grande -->
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <img id="modal-image" src="" alt="Imagem em Tamanho Grande" />
+      </div>
+    </div>
+
+    <script>
+      // Código JavaScript para a galeria aqui
+
+      // JavaScript para a galeria
+      var modal = document.getElementById("myModal");
+      var modalImage = document.getElementById("modal-image");
+      var galleryImages = document.querySelectorAll(".gallery img");
+      var closeModal = document.getElementsByClassName("close")[0];
+
+      // Abrir modal com a imagem em tamanho grande quando a imagem na galeria é clicada
+      galleryImages.forEach(function (image) {
+        image.onclick = function () {
+          modal.style.display = "block";
+          modalImage.src = this.src;
+        };
+      });
+
+      // Fechar o modal ao clicar no botão de fechar
+      closeModal.onclick = function () {
+        modal.style.display = "none";
+      };
+
+      // Fechar o modal ao clicar fora da imagem
+      window.onclick = function (event) {
+        if (event.target === modal) {
+          modal.style.display = "none";
+        }
+      };
+    </script>
+  </body>
+</html>
